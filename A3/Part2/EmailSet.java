@@ -16,6 +16,7 @@ import java.lang.Object;
 
 
 public class EmailSet {
+	private Email[] allEmails;
 	
 	private int totalEmails;
 	private String[] allStrings;
@@ -28,23 +29,30 @@ public class EmailSet {
 	}
 
 	public void readInFolder(String folderLocation) throws IOException{
+
 		File folder = new File(folderLocation);
 		File[] listOfFiles = folder.listFiles();
+		allEmails = new Email[listOfFiles.length];
 		totalEmails = 0;
 		for (File file : listOfFiles) {
 		    if (file.isFile()&&file.getName().endsWith(".txt")) {
-		      //  System.out.println(file.getName());
+		        //System.out.println(file.getName());
+		        Email email = new Email(file.getPath());
+		       // System.out.println(email.getWords());
+		        allEmails[totalEmails] = email;
 		        totalEmails++;
 		        //have collection of each line of the email
 		        //break the line into individual strings
 		        
-		        List<String> lines = Files.readAllLines(file.toPath(), Charset.defaultCharset());
+		       // List<String> lines = Files.readAllLines(file.toPath(), Charset.defaultCharset());
+		        List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.ISO_8859_1);
 		        //sometimes we get an error here -- need to investigate why
 		        //only appears on spamtraining and spamtesting, about 5 emails
 		        String[] arr = lines.toArray(new String[lines.size()]);
 		       
 		        for(int i = 0; i < arr.length; i++){
 		        	String[] indWords = arr[i].split(" ");
+		        	//System.out.println(arr[i]);
 		        	if(allStrings == null){
 		        		allStrings = indWords;
 		        	}
@@ -81,6 +89,10 @@ public class EmailSet {
 	
 	public int totalEmails(){
 		return totalEmails;
+	}
+	
+	public Email[] getAllEmails(){
+		return allEmails;
 	}
 	public void displayInfo(){
 		System.out.println("total emails: " + totalEmails);
