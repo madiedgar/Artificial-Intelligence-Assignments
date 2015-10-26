@@ -10,7 +10,7 @@ public class EmailTester {
 	private int totalHam; // total ham emails
 	private int totalSpam; // total spam emails
 	
-	public EmailTester(Lexicon ham, Lexicon spam, Email email, int totalSpam, int totalHam){
+	public EmailTester(Lexicon ham, Lexicon spam, Email email, int totalHam, int totalSpam){
 		this.totalHam = totalHam;
 		this.totalSpam = totalSpam;
 		this.spamLexicon = spam;
