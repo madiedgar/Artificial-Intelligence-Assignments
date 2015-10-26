@@ -3,6 +3,7 @@ package test1;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Email {
 		File file = new File(fileLocation);
 		//System.out.println(file.getName());
 		if(file.isFile()&&file.getName().endsWith(".txt")){
-			List<String> lines = Files.readAllLines(file.toPath(), Charset.defaultCharset());
+			List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.ISO_8859_1);
 	        String[] arr = lines.toArray(new String[lines.size()]);
 	       
 	        for(int i = 0; i < arr.length; i++){
