@@ -35,7 +35,6 @@ public class TrainingSets {
 		
 		EmailTester Etester = new EmailTester(hamLex, spamLex, email,hamTrain.totalEmails(),spamTrain.totalEmails());
 		if(Etester.isHam()){
-			//System.out.println("Email was ham");
 			if(isHam){
 				//we were right
 				return 1;
@@ -46,7 +45,6 @@ public class TrainingSets {
 			}
 		}
 		else{
-			//System.out.println("Email was spam");
 			if(!isHam){
 				//we were right
 				return 1;
