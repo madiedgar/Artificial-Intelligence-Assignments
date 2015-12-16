@@ -2,6 +2,7 @@ package assignment1;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+
 public class CheeseComparator implements Comparator<Position>
 {
 	ArrayList<Position> cheeseList;
